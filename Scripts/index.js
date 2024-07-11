@@ -4,6 +4,11 @@ const overLayer = document.querySelector(".over-layer");
 const sideBarCloseBtn = document.querySelector(".asideBar .close-btn");
 const sideBarOpenBtn = document.querySelector(".navBar .O-C-sideBar-btn");
 const loader = document.querySelector(".preload");
+const heroSliderItems = document.querySelectorAll(".slider-item");
+const heroSliderPrevBtn = document.querySelector(".slider-prev-btn");
+const heroSliderNextBtn = document.querySelector(".slider-next-btn");
+let autoSlideInterval;
+let lastPosition = 0;
 
 window.addEventListener("scroll", () => {
   if (window.scrollY >= 50) {
@@ -13,8 +18,6 @@ window.addEventListener("scroll", () => {
     navBar.classList.remove("active");
   }
 });
-
-let lastPosition = 0;
 
 function hideNavBar() {
   if (lastPosition < window.scrollY) {
@@ -41,68 +44,37 @@ window.addEventListener("load", function () {
   loader.classList.add("loaded");
 });
 
-const heroSlider = document.querySelector(".hero-slider");
-const heroSliderItems = document.querySelectorAll(".slider-item");
-const heroSliderPrevBtn = document.querySelector(".slider-prev-btn");
-const heroSliderNextBtn = document.querySelector(".slider-next-btn");
-
 let currentSlidePos = 0;
-let lastActiveSliderItem = heroSliderItems[0];
 
-const updateSliderPos = function () {
-  lastActiveSliderItem.classList.remove("active");
+function slideForward() {
+  heroSliderItems[currentSlidePos].classList.remove("active");
+  currentSlidePos++;
+  if (currentSlidePos == heroSliderItems.length) currentSlidePos = 0;
   heroSliderItems[currentSlidePos].classList.add("active");
-  lastActiveSliderItem = heroSliderItems[currentSlidePos];
-};
+}
+function slideBack() {
+  heroSliderItems[currentSlidePos].classList.remove("active");
+  currentSlidePos--;
+  if (currentSlidePos == -1) currentSlidePos = heroSliderItems.length - 1;
+  heroSliderItems[currentSlidePos].classList.add("active");
+}
+heroSliderNextBtn.addEventListener("click", slideForward);
+heroSliderPrevBtn.addEventListener("click", slideBack);
+heroSliderNextBtn.addEventListener("mouseenter", () => {
+  clearInterval(autoSlideInterval);
+});
+heroSliderPrevBtn.addEventListener("mouseenter", () => {
+  clearInterval(autoSlideInterval);
+});
+heroSliderNextBtn.addEventListener("mouseleave", () => {
+  autoSlide();
+});
+heroSliderPrevBtn.addEventListener("mouseleave", () => {
+  autoSlide();
+});
 
-const slideNext = function () {
-  if (currentSlidePos >= heroSliderItems.length - 1) {
-    currentSlidePos = 0;
-  } else {
-    currentSlidePos++;
-  }
-
-  updateSliderPos();
-};
-
-heroSliderNextBtn.addEventListener("click", slideNext);
-
-const slidePrev = function () {
-  if (currentSlidePos <= 0) {
-    currentSlidePos = heroSliderItems.length - 1;
-  } else {
-    currentSlidePos--;
-  }
-
-  updateSliderPos();
-};
-
-heroSliderPrevBtn.addEventListener("click", slidePrev);
-
-/**
- * auto slide
- */
-
-let autoSlideInterval;
-
-const autoSlide = function () {
-  autoSlideInterval = setInterval(function () {
-    slideNext();
+function autoSlide() {
+  autoSlideInterval = setInterval(() => {
+    slideForward();
   }, 7000);
-};
-
-// addEventOnElements(
-//   [heroSliderNextBtn, heroSliderPrevBtn],
-//   "mouseover",
-//   function () {
-//     clearInterval(autoSlideInterval);
-//   }
-// );
-
-// addEventOnElements(
-//   [heroSliderNextBtn, heroSliderPrevBtn],
-//   "mouseout",
-//   autoSlide
-// );
-
-window.addEventListener("load", autoSlide);
+}

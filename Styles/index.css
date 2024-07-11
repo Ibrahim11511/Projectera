@@ -184,7 +184,8 @@ body {
     font-weight: var(--weight-regular);
     line-height: var(--lineHeight-5);
     position: relative;
-    height: 3000vh;
+    /* height: 3000vh; */
+    width: 100vw;
     overflow-x: hidden;
 }
 
@@ -194,7 +195,7 @@ nav {
     left: 0;
     width: 100%;
     padding: 15px 30px;
-    z-index: 1;
+    z-index: 100;
 }
 
 nav .small-header {
@@ -207,6 +208,7 @@ nav .small-header {
 nav.active {
     background-color: var(--eerie-black-4);
     padding-block-end: 25px;
+    box-shadow: var(--shadow-1);
 }
 
 nav.hide {
@@ -600,14 +602,6 @@ aside .phone:is(:hover, :focus-visible) {
     font-weight: var(--weight-bold);
 }
 
-/* .hero .hero-slider .slider-item .from-T-B {
-    transform: translateY(-15px) translateX(-50%);
-    -webkit-transform: translateY(-15px) translateX(-50%);
-    -moz-transform: translateY(-15px) translateX(-50%);
-    -ms-transform: translateY(-15px) translateX(-50%);
-    -o-transform: translateY(-15px) translateX(-50%);
-} */
-
 .hero .hero-slider .slider-item.active .from-T-B {
     opacity: 0;
     animation: fromTopToBottom 1s ease-in-out forwards;
@@ -757,8 +751,8 @@ aside .phone:is(:hover, :focus-visible) {
     width: 50px;
     height: 50px;
     position: absolute;
-    bottom: 40px;
-    right: 40px;
+    bottom: 30px;
+    right: 20px;
     background-color: var(--smoky-black-1);
     padding: 40px;
 }
@@ -782,6 +776,8 @@ aside .phone:is(:hover, :focus-visible) {
 
 .hero .hero-btn img {
     position: absolute;
+    width: 80%;
+    height: 90%;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -789,6 +785,156 @@ aside .phone:is(:hover, :focus-visible) {
     -moz-transform: translateX(-50%) translateY(-50%);
     -ms-transform: translateX(-50%) translateY(-50%);
     -o-transform: translateX(-50%) translateY(-50%);
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* display: none; */
+}
+
+.services .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.services .text .services-title {
+    color: var(--gold-crayola);
+    font-weight: var(--weight-bold);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: var(--letterSpacing-1);
+    position: relative;
+}
+
+.services .text .services-title::after {
+    content: url(../Images/separator.svg);
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    display: block;
+    width: 100px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+.services .text .services-subtitle {
+    color: var(--white);
+    margin-top: 20px;
+    line-height: var(--lineHeight-2);
+    font-size: var(--fontSize-body-4);
+    font-weight: var(--weight-regular);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.services ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* gap: 50px; */
+    margin: 50px 0;
+}
+
+.services ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    position: relative;
+}
+
+.services ul li::before {
+    content: url(../Images/img-pattern.svg);
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    width: 180px;
+    transform: translateX(-50%) translateY(45%);
+    -webkit-transform: translateX(-50%) translateY(45%);
+    -moz-transform: translateX(-50%) translateY(45%);
+    -ms-transform: translateX(-50%) translateY(45%);
+    -o-transform: translateX(-50%) translateY(45%);
+    z-index: -1;
+    transform-style: preserve-3d;
+    transition: var(--transition-2);
+    -webkit-transition: var(--transition-2);
+    -moz-transition: var(--transition-2);
+    -ms-transition: var(--transition-2);
+    -o-transition: var(--transition-2);
+}
+
+.services ul li .image {
+    max-width: 300px;
+    width: 100%;
+    height: fit-content;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.services ul li .image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(to right, transparent 0%, #fff6 100%);
+    transform: skewX(-0.08turn) translateX(-185%);
+    -webkit-transform: skewX(-0.08turn) translateX(-185%);
+    -moz-transform: skewX(-0.08turn) translateX(-185%);
+    -ms-transform: skewX(-0.08turn) translateX(-185%);
+    -o-transform: skewX(-0.08turn) translateX(-185%);
+    transition: var(--transition-2);
+    -webkit-transition: var(--transition-2);
+    -moz-transition: var(--transition-2);
+    -ms-transition: var(--transition-2);
+    -o-transition: var(--transition-2);
+}
+
+.services ul li:hover .image::after {
+    transform: skewX(-0.08turn) translateX(300%);
+    -webkit-transform: skewX(-0.08turn) translateX(300%);
+    -moz-transform: skewX(-0.08turn) translateX(300%);
+    -ms-transform: skewX(-0.08turn) translateX(300%);
+    -o-transform: skewX(-0.08turn) translateX(300%);
+}
+
+.services ul li:hover::before {
+    transform: rotateY(180deg) translateX(50%) translateY(45%);
+    -webkit-transform: rotateY(180deg) translateX(50%) translateY(45%);
+    -moz-transform: rotateY(180deg) translateX(50%) translateY(45%);
+    -ms-transform: rotateY(180deg) translateX(50%) translateY(45%);
+    -o-transform: rotateY(180deg) translateX(50%) translateY(45%);
+}
+
+.services ul li .image img {
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.services ul li .service-name {
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: var(--letterSpacing-1);
+    margin-top: 30px;
+}
+
+.services ul li .service-name:hover {
+    color: var(--gold-crayola);
 }
 
 @media (min-width:847px) {
@@ -994,6 +1140,18 @@ aside .phone:is(:hover, :focus-visible) {
         min-width: 100px;
     }
 
+    .hero .hero-btn {
+        width: 150px;
+        height: 150px;
+        bottom: 40px;
+        right: 40px;
+    }
+
+    .hero .hero-btn img {
+        width: 80%;
+        height: 90%;
+    }
+
     .hero .slider-btn {
         display: block;
         position: absolute;
@@ -1055,5 +1213,37 @@ aside .phone:is(:hover, :focus-visible) {
         -moz-transform: translateX(18px) rotate(-45deg) translateY(-14px);
         -ms-transform: translateX(18px) rotate(-45deg) translateY(-14px);
         -o-transform: translateX(18px) rotate(-45deg) translateY(-14px);
+    }
+
+    .services .text .services-subtitle {
+        max-width: 800px;
+        width: 100%;
+    }
+
+    .services ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        transform: translateY(-80px);
+        -webkit-transform: translateY(-80px);
+        -moz-transform: translateY(-80px);
+        -ms-transform: translateY(-80px);
+        -o-transform: translateY(-80px);
+    }
+
+    .services ul li {
+        margin: 80px 25px;
+        filter: drop-shadow(10px 10px 5px var(--smoky-black-1));
+        -webkit-filter: drop-shadow(10px 10px 5px var(--smoky-black-1));
+    }
+
+}
+
+@media (min-width:1050px) {
+    .services ul li:nth-child(even) {
+        transform: translateY(80px);
+        -webkit-transform: translateY(80px);
+        -moz-transform: translateY(80px);
+        -ms-transform: translateY(80px);
+        -o-transform: translateY(80px);
     }
 }
