@@ -586,7 +586,7 @@ aside .phone:is(:hover, :focus-visible) {
 
 .hero .hero-slider .slider-item .slider-title {
     position: absolute;
-    top: 23%;
+    top: 20%;
     left: 50%;
     text-transform: uppercase;
     text-wrap: nowrap;
@@ -600,9 +600,58 @@ aside .phone:is(:hover, :focus-visible) {
     font-weight: var(--weight-bold);
 }
 
+/* .hero .hero-slider .slider-item .from-T-B {
+    transform: translateY(-15px) translateX(-50%);
+    -webkit-transform: translateY(-15px) translateX(-50%);
+    -moz-transform: translateY(-15px) translateX(-50%);
+    -ms-transform: translateY(-15px) translateX(-50%);
+    -o-transform: translateY(-15px) translateX(-50%);
+} */
+
+.hero .hero-slider .slider-item.active .from-T-B {
+    opacity: 0;
+    animation: fromTopToBottom 1s ease-in-out forwards;
+    -webkit-animation: fromTopToBottom 1s ease-in-out forwards;
+}
+
+.hero .hero-slider .slider-item.active .from-T-B:first-child {
+    animation-delay: 1s;
+}
+
+.hero .hero-slider .slider-item.active .from-T-B:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+.hero .hero-slider .slider-item.active .from-T-B:last-child {
+    animation-delay: 2s;
+}
+
+@keyframes fromTopToBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(-15px) translateX(-50%);
+        -webkit-transform: translateY(-15px) translateX(-50%);
+        -moz-transform: translateY(-15px) translateX(-50%);
+        -ms-transform: translateY(-15px) translateX(-50%);
+        -o-transform: translateY(-15px) translateX(-50%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(15px) translateX(-50%);
+        -webkit-transform: translateY(15px) translateX(-50%);
+        -moz-transform: translateY(15px) translateX(-50%);
+        -ms-transform: translateY(15px) translateX(-50%);
+        -o-transform: translateY(15px) translateX(-50%);
+    }
+}
 
 .hero .hero-slider .slider-item .slider-title::after {
     content: url("../Images/separator.svg");
+    position: absolute;
+    bottom: -75%;
+    left: 0;
+    right: 0;
     display: block;
     width: 200px;
     margin: 0 auto;
@@ -611,7 +660,7 @@ aside .phone:is(:hover, :focus-visible) {
 .hero .hero-slider .slider-item .slider-subtitle {
     position: absolute;
     line-height: var(--lineHeight-6);
-    top: 35%;
+    top: 30%;
     left: 50%;
     transform: translateX(-50%);
     color: var(--white);
@@ -943,5 +992,68 @@ aside .phone:is(:hover, :focus-visible) {
 
     .main-header .bottom-header .logo-place img {
         min-width: 100px;
+    }
+
+    .hero .slider-btn {
+        display: block;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border: 1px solid var(--gold-crayola);
+        font-size: var(--fontSize-body-3);
+        transform: rotate(45deg);
+        background-color: transparent;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+    }
+
+    .hero .slider-btn i {
+        color: var(--gold-crayola);
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+    }
+
+    .hero .slider-prev-btn {
+        top: 50%;
+        left: 35px;
+    }
+
+    .hero .slider-next-btn {
+        top: 50%;
+        right: 35px;
+    }
+
+    .hero .slider-btn:is(:hover, :focus-visible) {
+        background-color: var(--gold-crayola);
+    }
+
+    .hero .slider-btn:is(:hover, :focus-visible) i {
+        color: var(--white);
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        -o-transform: scale(1.2);
+    }
+
+    .hero .slider-btn.slider-prev-btn:is(:hover, :focus-visible) i {
+        transform: translateX(-18px) rotate(-45deg) translateY(14px);
+        -webkit-transform: translateX(-18px) rotate(-45deg) translateY(14px);
+        -moz-transform: translateX(-18px) rotate(-45deg) translateY(14px);
+        -ms-transform: translateX(-18px) rotate(-45deg) translateY(14px);
+        -o-transform: translateX(-18px) rotate(-45deg) translateY(14px);
+    }
+
+    .hero .slider-btn.slider-next-btn:is(:hover, :focus-visible) i {
+        transform: translateX(18px) rotate(-45deg) translateY(-14px);
+        -webkit-transform: translateX(18px) rotate(-45deg) translateY(-14px);
+        -moz-transform: translateX(18px) rotate(-45deg) translateY(-14px);
+        -ms-transform: translateX(18px) rotate(-45deg) translateY(-14px);
+        -o-transform: translateX(18px) rotate(-45deg) translateY(-14px);
     }
 }
