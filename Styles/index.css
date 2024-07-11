@@ -7,11 +7,6 @@
     outline: none;
     border: none;
     list-style-type: none;
-    transition: all .2s linear;
-    -webkit-transition: all .2s linear;
-    -moz-transition: all .2s linear;
-    -ms-transition: all .2s linear;
-    -o-transition: all .2s linear;
 }
 
 html {
@@ -508,7 +503,6 @@ aside .phone:is(:hover, :focus-visible) {
 }
 
 .hero {
-    margin-bottom: var(--section-space);
     position: relative;
 }
 
@@ -520,6 +514,7 @@ aside .phone:is(:hover, :focus-visible) {
     width: 100%;
     height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 
 .hero .hero-slider .slider-item {
@@ -792,7 +787,8 @@ aside .phone:is(:hover, :focus-visible) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* display: none; */
+    background-color: var(--smoky-black-2);
+    padding-block: var(--section-space);
 }
 
 .services .text {
@@ -842,7 +838,6 @@ aside .phone:is(:hover, :focus-visible) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* gap: 50px; */
     margin: 50px 0;
 }
 
@@ -853,6 +848,26 @@ aside .phone:is(:hover, :focus-visible) {
     align-items: center;
     margin: 30px 0;
     position: relative;
+    filter: drop-shadow(10px 10px 5px var(--smoky-black-1));
+    -webkit-filter: drop-shadow(10px 10px 5px var(--smoky-black-1));
+}
+
+@keyframes upDown {
+    0% {
+        transform: translateY(10px);
+        -webkit-transform: translateY(10px);
+        -moz-transform: translateY(10px);
+        -ms-transform: translateY(10px);
+        -o-transform: translateY(10px);
+    }
+
+    100% {
+        transform: translateY(-10px);
+        -webkit-transform: translateY(-10px);
+        -moz-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        -o-transform: translateY(-10px);
+    }
 }
 
 .services ul li::before {
@@ -873,6 +888,7 @@ aside .phone:is(:hover, :focus-visible) {
     -moz-transition: var(--transition-2);
     -ms-transition: var(--transition-2);
     -o-transition: var(--transition-2);
+    transition-delay: 100ms;
 }
 
 .services ul li .image {
@@ -931,6 +947,15 @@ aside .phone:is(:hover, :focus-visible) {
     text-transform: uppercase;
     letter-spacing: var(--letterSpacing-1);
     margin-top: 30px;
+    transition: var(--transition-1);
+    -webkit-transition: var(--transition-1);
+    -moz-transition: var(--transition-1);
+    -ms-transition: var(--transition-1);
+    -o-transition: var(--transition-1);
+    line-height: var(--lineHeight-6);
+    font-size: 20px;
+    text-align: center;
+    margin-top: 45px;
 }
 
 .services ul li .service-name:hover {
@@ -953,6 +978,10 @@ aside .phone:is(:hover, :focus-visible) {
         flex-direction: column;
     }
 
+    nav.active .main-header .top-header {
+        display: none;
+    }
+
     nav .main-header .top-header {
         width: 100%;
         display: flex;
@@ -963,7 +992,6 @@ aside .phone:is(:hover, :focus-visible) {
     }
 
     nav .main-header .top-header .right {
-        /* width: 40%; */
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -1232,8 +1260,6 @@ aside .phone:is(:hover, :focus-visible) {
 
     .services ul li {
         margin: 80px 25px;
-        filter: drop-shadow(10px 10px 5px var(--smoky-black-1));
-        -webkit-filter: drop-shadow(10px 10px 5px var(--smoky-black-1));
     }
 
 }
