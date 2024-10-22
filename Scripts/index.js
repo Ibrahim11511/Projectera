@@ -9,6 +9,7 @@ const heroSliderPrevBtn = document.querySelector(".slider-prev-btn");
 const heroSliderNextBtn = document.querySelector(".slider-next-btn");
 let autoSlideInterval;
 let lastPosition = 0;
+autoSlide();
 
 window.addEventListener("scroll", () => {
   if (window.scrollY >= 50) {
@@ -28,13 +29,15 @@ function hideNavBar() {
   lastPosition = window.scrollY;
 }
 
-sideBarOpenBtn.addEventListener("click", () => {
+sideBarOpenBtn.addEventListener("click", function () {
   sideBar.classList.add("active");
   overLayer.classList.add("active");
+  this.style.visibility = "hidden";
 });
 sideBarCloseBtn.addEventListener("click", () => {
   sideBar.classList.remove("active");
   overLayer.classList.remove("active");
+  sideBarOpenBtn.style.visibility = "visible";
 });
 overLayer.addEventListener("click", () => {
   sideBar.classList.remove("active");
